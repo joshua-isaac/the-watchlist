@@ -14,13 +14,18 @@ import Watchlist from "./components/Watchlist";
 import Register from "./components/Register";
 import Login from "./components/Login";
 
+// API Call
+const API_KEY = "7b9e2473f094d438dd1ce87d0bcb97af";
+const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: null,
       displayName: null,
-      userID: null
+      userID: null,
+      url: url
     };
   }
 
@@ -87,7 +92,7 @@ class App extends Component {
          />
         <Router>
           <Home exact path="/" user={this.state.user} />
-          <Movies path="/movies" user={this.state.user} />
+          <Movies path="/movies" user={this.state.user} url={this.state.url} />
           <Watchlist path="/watchlist" user={this.state.user} />
           <Register path="/register" registerUser={this.registerUser} />
           <Login path="/login"  />

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import firebase from '../config/Firebase';
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import './Register.css';
-import navigate from '@reach/router';
+import { navigate } from '@reach/router';
 
 import FormError from './FormError';
 
@@ -13,10 +13,8 @@ export default class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
-            displayName: '',
             email: '',
-            passOne: '',
-            passTwo: '',
+            password: '',
             errorMessage: null
         }
 
@@ -31,34 +29,24 @@ export default class Login extends Component {
         const itemValue = e.target.value;
 
         // setting the state upon input, item name is name of form, value is value of form
-        this.setState({[itemName]: itemValue}, () => {
-            if(this.state.passOne !== this.state.passTwo){
-                this.setState({
-                    errorMessage: 'Passwords do not match.'
-                })
-            } else {
-                this.setState({
-                    errorMessage: null
-                })
-            }
-        });
+        this.setState({[itemName]: itemValue});
+
     }
 
     handleSubmit(e){
         // Prevent default so page doesnt reload which will lose state
         e.preventDefault();
         var registrationInfo = {
-            displayName: this.state.displayName,
             email: this.state.email,
-            password: this.state.passOne
+            password: this.state.password
         } 
         // Call firebase function to create new user with provided email and password
-        firebase.auth().createUserWithEmailAndPassword(
+        firebase.auth().signInWithEmailAndPassword(
             registrationInfo.email,
             registrationInfo.password,
         ).then(() => {
-            this.props.registerUser(registrationInfo.displayName);
-            console.log(registrationInfo.displayName + ' has created an account!');
+            console.log(registrationInfo.email + ' has logged in!');
+            navigate('/movies');
         }).catch(error => {
             // If we get an error message, set the errorMessage state to the error.message we get back from firebase
             if (error.message !== null){
@@ -77,6 +65,14 @@ export default class Login extends Component {
           <Col sm={12}>
             <Form className="form" onSubmit={this.handleSubmit}>
             <h1>Login</h1>
+              
+              {/* If passOne does not equal to passTwo, trigger error message */}
+            {this.state.errorMessage !== null ? (
+                <FormError theMessage={this.state.errorMessage} />
+            
+            // if passOne = passTwo, set errorMessage to null (nothing);
+            ) : null }
+            
               <Form.Group>
                 <Form.Control type="text"
                               name="email"
