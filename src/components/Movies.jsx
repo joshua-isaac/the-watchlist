@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
+import { Container } from 'react-bootstrap';
 import axios from 'axios';
+
+import MovieCard from './MovieCard';
 
 export default class Movies extends Component {
     constructor(){
@@ -29,14 +32,18 @@ export default class Movies extends Component {
 
       
     return (
-      <div>
-        {/* {this.state.movies.map(movie => (
-            // <MovieTile 
-            //     key={movie.id}
-            //     id={movie.id}
-            // />
-        ))} */}
-      </div>
+      <Container>
+          {this.state.movies.map(movie => (
+              <MovieCard
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                overview={movie.overview}
+                poster={`http://image.tmdb.org/t/p/w300//${movie.poster_path}`}
+                rating={movie.vote_average}
+              />
+          ))}
+      </Container>
     )
   }
 }

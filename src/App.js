@@ -71,6 +71,13 @@ class App extends Component {
     });
   };
 
+  addMovie(){
+    const ref = firebase.database().ref(`watchlist/${this.state.user.uid}`);
+    ref.push({
+
+    });
+  }
+
   render() {
     return (
       // <Router>
@@ -92,7 +99,10 @@ class App extends Component {
          />
         <Router>
           <Home exact path="/" user={this.state.user} />
-          <Movies path="/movies" user={this.state.user} url={this.state.url} />
+          <Movies path="/movies" 
+                  user={this.state.user} 
+                  url={this.state.url}
+                  addMovie={this.addMovie} />
           <Watchlist path="/watchlist" user={this.state.user} />
           <Register path="/register" registerUser={this.registerUser} />
           <Login path="/login"  />
