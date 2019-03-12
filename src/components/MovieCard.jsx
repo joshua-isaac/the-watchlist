@@ -24,8 +24,9 @@ export default class MovieCard extends Component {
         const movie = {
             id: this.state.id,
             title: this.state.title,
-            posterSrc: this.state.poster,
-            overview: this.state.overview
+            poster: this.state.poster,
+            overview: this.state.overview,
+            rating: this.state.rating
           };
     
           movieRef.push(movie);
@@ -47,7 +48,7 @@ export default class MovieCard extends Component {
                 <p>{this.state.overview}</p>
                 <h4>Rating: {this.state.rating}</h4>
                 <Form>
-                    <Button onClick={this.addMovie}>Add to Watchlist</Button>
+                    <Button onClick={this.addMovie.bind(this)}>Add to Watchlist</Button>
                 </Form>
             </Col>
         </Row>

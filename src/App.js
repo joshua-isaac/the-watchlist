@@ -6,6 +6,7 @@ import "./App.css";
 import { Router, navigate } from "@reach/router";
 import firebase from "./config/Firebase";
 
+
 // Components
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";

@@ -2,14 +2,17 @@ import React, { Component } from "react";
 
 import { Container, Row, Col } from "react-bootstrap";
 
+import './Home.css';
+
 class Home extends React.Component {
   render() {
     const { user } = this.props;
 
     return (
+      <div className="home">
       <Container className="text-center">
         <Row className="justify-content-center">
-          <Col col={10} md={10} lg={8} xl={7}>
+          <Col col={10} md={10} lg={8} xl={7} className="mt-4">
             <h1>The Watchlist</h1>
             <p className="lead">
               This simple app creates meetings, allows people to check in, and
@@ -40,6 +43,7 @@ class Home extends React.Component {
           </Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }
