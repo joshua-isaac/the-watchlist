@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import firebase from '../config/Firebase';
 
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 
@@ -12,22 +13,27 @@ export default class MovieCard extends Component {
             title: props.title,
             overview: props.overview,
             poster: props.poster,
-            rating: props.rating
+            rating: props.rating,
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
-    handleSubmit(e){
-        e.preventDefault();
-        this.props.addMovie(
-            this.state.id,
-            this.state.title,
-            this.state.overview,
-            this.state.poster,
-            this.state.rating
-            );
+
+    addMovie(){
+        const movieRef = firebase.database().ref(`watchlist/${this.props.user}`);
+
+        const movie = {
+            id: this.state.id,
+            title: this.state.title,
+            posterSrc: this.state.poster,
+            overview: this.state.overview
+          };
+    
+          movieRef.push(movie);
+
     }
 
   render() {
+
     return (
       <Container>
         <Row className="movie-card mt-4 mb-4">
@@ -40,8 +46,8 @@ export default class MovieCard extends Component {
                 <h1>{this.state.title}</h1>
                 <p>{this.state.overview}</p>
                 <h4>Rating: {this.state.rating}</h4>
-                <Form onSubmit={this.handleSubmit}>
-                    <Button type="submit" onClick={this.addMovie}>Add to Watchlist</Button>
+                <Form>
+                    <Button onClick={this.addMovie}>Add to Watchlist</Button>
                 </Form>
             </Col>
         </Row>

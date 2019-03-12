@@ -71,41 +71,29 @@ class App extends Component {
     });
   };
 
-  addMovie(){
-    const ref = firebase.database().ref(`watchlist/${this.state.user.uid}`);
-    ref.push({
-
-    });
-  }
 
   render() {
     return (
-      // <Router>
-      // <div>
-      //   <Navigation user={this.state.user} />
-      //   <Switch>
-      //     <Route exact path="/" component={Home} user={this.state.user}/>
-      //     <Route path="/movies" component={Movies} user={this.state.user} />
-      //     <Route path="/watchlist" component={Watchlist} user={this.state.user} />
-      //     {/* registerUser is prop we are passing from Register component, this.registerUser is being called locally*/}
-      //     <Route path="/register" component={Register} registerUser={this.registerUser} />
-      //   </Switch>
-      // </div>
-      // </Router>
 
       <div>
         <Navigation user={this.state.user}
                     logOutUser={this.logOutUser}
          />
         <Router>
-          <Home exact path="/" user={this.state.user} />
+          <Home exact path="/"
+                user={this.state.user}
+           />
           <Movies path="/movies" 
-                  user={this.state.user} 
+                  user={this.state.userID} 
                   url={this.state.url}
-                  addMovie={this.addMovie} />
-          <Watchlist path="/watchlist" user={this.state.user} />
-          <Register path="/register" registerUser={this.registerUser} />
-          <Login path="/login"  />
+           />
+          <Watchlist path="/watchlist"
+                     user={this.state.user}
+           />
+          <Register path="/register"
+                    registerUser={this.registerUser}
+           />
+          <Login path="/login" />
         </Router>
       </div>
     );

@@ -6,8 +6,8 @@ import axios from 'axios';
 import MovieCard from './MovieCard';
 
 export default class Movies extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             movies: []
         }
@@ -29,6 +29,7 @@ export default class Movies extends Component {
   }
 
   render() {
+    console.log(this.props.user);
 
       
     return (
@@ -41,6 +42,7 @@ export default class Movies extends Component {
                 overview={movie.overview}
                 poster={`http://image.tmdb.org/t/p/w300//${movie.poster_path}`}
                 rating={movie.vote_average}
+                user={this.props.user}
               />
           ))}
       </Container>
