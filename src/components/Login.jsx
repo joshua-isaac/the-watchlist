@@ -3,10 +3,12 @@ import React, { Component } from "react";
 import firebase from '../config/Firebase';
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import './Register.css';
+import navigate from '@reach/router';
 
 import FormError from './FormError';
 
-export default class Register extends Component {
+
+export default class Login extends Component {
 
     constructor(props){
         super(props);
@@ -74,55 +76,27 @@ export default class Register extends Component {
         <Row>
           <Col sm={12}>
             <Form className="form" onSubmit={this.handleSubmit}>
-            <h1>Register</h1>
-
-            {/* If passOne does not equal to passTwo, trigger error message */}
-            {this.state.errorMessage !== null ? (
-                <FormError theMessage={this.state.errorMessage} />
-            
-            // if passOne = passTwo, set errorMessage to null (nothing);
-            ) : null }
-
-            {/* Display Name Form */}
+            <h1>Login</h1>
               <Form.Group>
                 <Form.Control type="text"
-                              name="displayName"
-                              placeholder="Enter Display Name"
-                              value={this.state.displayName}
+                              name="email"
+                              placeholder="Enter Email"
+                              value={this.state.email}
                               onChange={this.handleChange} 
                     />
               </Form.Group>
 
               {/* Email Form */}
               <Form.Group>
-                <Form.Control type="email"
-                              name="email"
-                              placeholder="Enter email"
-                              value={this.state.email}
+                <Form.Control type="password"
+                              name="password"
+                              placeholder="Password"
+                              value={this.state.password}
                               onChange={this.handleChange}
                     />
-              </Form.Group>
-
-              {/* Password One Form */}
-              <Form.Group>
-                <Form.Control type="password"
-                              name="passOne"                               placeholder="Password"
-                              value={this.state.passOne}
-                              onChange={this.handleChange} 
-                    />
-              </Form.Group>
-
-              {/* Password Two Form */}
-              <Form.Group>
-                <Form.Control type="password"
-                              name="passTwo"
-                              placeholder="Confirm Password"
-                              value={this.state.passTwo}
-                              onChange={this.handleChange}
-                 />
               </Form.Group>
               <Button variant="primary" type="submit">
-                Register
+                Login
               </Button>
             </Form>
           </Col>

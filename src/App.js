@@ -2,60 +2,97 @@ import React, { Component } from "react";
 import "./App.css";
 
 // Libraries
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import firebase from './config/Firebase';
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, navigate } from "@reach/router";
+import firebase from "./config/Firebase";
 
 // Components
-import Navigation from './components/Navigation';
-import Home from './components/Home';
-import Movies from './components/Movies';
-import Watchlist from './components/Watchlist';
-import Register from './components/Register';
-
+import Navigation from "./components/Navigation";
+import Home from "./components/Home";
+import Movies from "./components/Movies";
+import Watchlist from "./components/Watchlist";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 class App extends Component {
-
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      user: null
-    }
+      user: null,
+      displayName: null,
+      userID: null
+    };
   }
 
-  componentDidMount(){
-
-    // set up reference to our firebase db
-    const ref = firebase.database().ref('user');
-
-    // whenever we get a value from the reference recieve snapshot
-    ref.on('value', snapshot => {
-
-      // set snapshot to FBUser
-      let FBUser = snapshot.val();
-
-      // set the state of the user to FBUser
-      this.setState({
-        user: FBUser
-      })
-
-      // log state
-      console.log(this.state.user);
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(FBUser => {
+      if (FBUser) {
+        this.setState({
+          user: FBUser,
+          displayName: FBUser.displayName,
+          userID: FBUser.uid
+        });
+      }
     });
   }
 
+  registerUser = userName => {
+    firebase.auth().onAuthStateChanged(FBUser => {
+      FBUser.updateProfile({
+        displayName: userName
+      }).then(() => {
+        this.setState({
+          user: FBUser,
+          displayName: FBUser.displayName,
+          userID: FBUser.uid
+        });
+        navigate("/movies");
+      });
+    });
+  };
+
+  logOutUser = e => {
+    e.preventDefault();
+    this.setState({
+      displayName: null,
+      userID: null,
+      user: null
+    });
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+      navigate('/');
+    });
+  };
+
   render() {
     return (
-      <Router>
+      // <Router>
+      // <div>
+      //   <Navigation user={this.state.user} />
+      //   <Switch>
+      //     <Route exact path="/" component={Home} user={this.state.user}/>
+      //     <Route path="/movies" component={Movies} user={this.state.user} />
+      //     <Route path="/watchlist" component={Watchlist} user={this.state.user} />
+      //     {/* registerUser is prop we are passing from Register component, this.registerUser is being called locally*/}
+      //     <Route path="/register" component={Register} registerUser={this.registerUser} />
+      //   </Switch>
+      // </div>
+      // </Router>
+
       <div>
-        <Navigation user={this.state.user} />
-        <Switch>
-          <Route exact path="/" component={Home} user={this.state.user}/>
-          <Route path="/movies" component={Movies} user={this.state.user} />
-          <Route path="/watchlist" component={Watchlist} user={this.state.user} />
-          <Route path="/register" component={Register} user={this.state.user} />
-        </Switch>
+        <Navigation user={this.state.user}
+                    logOutUser={this.logOutUser}
+         />
+        <Router>
+          <Home exact path="/" user={this.state.user} />
+          <Movies path="/movies" user={this.state.user} />
+          <Watchlist path="/watchlist" user={this.state.user} />
+          <Register path="/register" registerUser={this.registerUser} />
+          <Login path="/login"  />
+        </Router>
       </div>
-      </Router>
     );
   }
 }

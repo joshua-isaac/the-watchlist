@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 
+import { Link } from '@reach/router';
 import { Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap';
 import { FaFilm } from 'react-icons/fa';
 
 export default class Navigation extends Component {
 
   render() {
-    const { user } = this.props;
+    const { user, logOutUser } = this.props;
     return (
       <div>
         <Navbar bg="light" expand="lg">
@@ -24,7 +25,11 @@ export default class Navigation extends Component {
                 <Nav.Link href="/watchlist">My Watchlist</Nav.Link>
             )}
             { user && (
-                <Nav.Link href="#link">Logout</Nav.Link>
+                <Nav.Link
+                    onClick={e => logOutUser(e)} 
+                >
+                          Logout
+                </Nav.Link>
             )}
             { user && (
                 <Nav.Link href="#link">FAQ</Nav.Link>
