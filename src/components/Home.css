@@ -1,8 +1,5 @@
 
 .home{
-background-image: url("../assets//background.jpg");
-   height: 92vh;
-   background-size: cover;
-   background-repeat: no-repeat;
-   background-position: top center;
+    background: red;
+    height: 100vh;
 }

@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 
-import { Container } from 'react-bootstrap';
+import { Container, Button, Modal } from 'react-bootstrap';
 import axios from 'axios';
 
 import MovieCard from './MovieCard';
+import ModalAlert from './ModalAlert'
+
 
 export default class Movies extends Component {
     constructor(props){
@@ -19,7 +21,7 @@ export default class Movies extends Component {
     console.log(res);
     const movies = res.data.results;
     this.setState({
-        movies: movies
+        movies: movies,
     })
     });
   }
@@ -28,12 +30,14 @@ export default class Movies extends Component {
       this.fetchMovies();
   }
 
+
   render() {
     console.log(this.props.user);
 
       
     return (
       <Container>
+
           {this.state.movies.map(movie => (
               <MovieCard
                 key={movie.id}

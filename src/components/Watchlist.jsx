@@ -18,48 +18,52 @@ export default class Watchlist extends Component {
 
   componentDidMount(){
     console.log(this.props.user);
+
+    // set up movie ref to the user's watchlist
+    const movieRef = firebase.database().ref(`watchlist/${this.props.user}`);
+    
+    // recieve records from database
+    movieRef.on("value", snapshot => {
+      
+      let movies = snapshot.val()
+
+      console.log(movies);
+
+      let newState = [];
+
+      for (let movie in movies){
+        newState.push({
+          id: movies[movie].id,
+          title: movies[movie].title,
+          overview: movies[movie].overview,
+          rating: movies[movie].rating,
+          poster: movies[movie].poster,
+        });
+      }
+
+      this.setState({
+        watchlist: newState
+      });
+    });
+    
   }
 
   render() {
 
-    // const movieRef = firebase.database().ref(`watchlist/${this.props.user}`);
-
-    // movieRef.on("value", snapshot => {
-    //   let movies = snapshot.val();
-
-    //   console.log(movies);
-
-    //   let newState = [];
-
-    //   for(let movie in movies){
-    //     newState.push({
-    //       id: movies[movie].id,
-    //       title: movies[movie].title,
-    //       rating: movies[movie].rating,
-    //       poster: movies[movie].poster
-    //     });
-    //   }
-
-    //   this.setState({
-    //     movies: newState
-    //   });
-
-    //   console.log(this.state.movies);
-
-    // });
-
-
     return (
-      <div>
-        {
-          
-        }
         <Container>
-            <WatchlistMovie
-
-            />
+            {this.state.watchlist.map(item => (
+              <WatchlistMovie
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  poster={item.poster}
+                  overview={item.overview}
+                  rating={item.rating}
+                  user={this.props.user}
+                />
+            ))}
         </Container>
-      </div>
     )
   }
 }

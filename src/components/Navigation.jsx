@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap';
 import { FaFilm } from 'react-icons/fa';
 
+import './Navigation.css';
+
 export default class Navigation extends Component {
 
   render() {
@@ -34,7 +36,7 @@ export default class Navigation extends Component {
                 <Nav.Link href="#link">FAQ</Nav.Link>
             )}
             { !user && (
-                <Nav.Link href="#link">Login</Nav.Link>
+                <Nav.Link href="/login">Login</Nav.Link>
             )}
             { !user && (
                 <Nav.Link href="/register">Register</Nav.Link>

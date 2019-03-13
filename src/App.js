@@ -32,6 +32,7 @@ class App extends Component {
     };
   }
 
+  // if FB user is authed, set the user state
   componentDidMount() {
     firebase.auth().onAuthStateChanged(FBUser => {
       if (FBUser) {
@@ -44,6 +45,7 @@ class App extends Component {
     });
   }
 
+  // register user function
   registerUser = userName => {
     firebase.auth().onAuthStateChanged(FBUser => {
       FBUser.updateProfile({
@@ -59,6 +61,7 @@ class App extends Component {
     });
   };
 
+  // log out user function
   logOutUser = e => {
     e.preventDefault();
     this.setState({
