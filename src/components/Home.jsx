@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import './Home.css';
 
-class Home extends React.Component {
+export default class Home extends Component {
   render() {
     const { user } = this.props;
 
@@ -47,5 +47,3 @@ class Home extends React.Component {
     );
   }
 }
-
-export default Home;

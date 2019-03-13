@@ -89,7 +89,7 @@ class App extends Component {
                   url={this.state.url}
            />
           <Watchlist path="/watchlist"
-                     user={this.state.user}
+                     user={this.state.userID}
            />
           <Register path="/register"
                     registerUser={this.registerUser}
