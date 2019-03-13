@@ -1,60 +1,63 @@
 import React, { Component } from 'react'
 import firebase from '../config/Firebase';
 
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 import WatchlistMovie from './WatchlistMovie';
 
 export default class Watchlist extends Component {
   constructor(props){
     super(props);
+    console.log(this.props);
     this.state = {
-      movies: [],
+      watchlist: []
     }
+  }
+
+
+
+  componentDidMount(){
+    console.log(this.props.user);
   }
 
   render() {
 
-    console.log(this.props.user);
+    // const movieRef = firebase.database().ref(`watchlist/${this.props.user}`);
 
-    const movieRef = firebase.database().ref(`watchlist/${this.props.user}`);
+    // movieRef.on("value", snapshot => {
+    //   let movies = snapshot.val();
 
-    movieRef.on("value", snapshot => {
-      let movies = snapshot.val();
+    //   console.log(movies);
 
-      console.log(movies);
+    //   let newState = [];
 
-      let newState = [];
+    //   for(let movie in movies){
+    //     newState.push({
+    //       id: movies[movie].id,
+    //       title: movies[movie].title,
+    //       rating: movies[movie].rating,
+    //       poster: movies[movie].poster
+    //     });
+    //   }
 
-      for(let movie in movies){
-        newState.push({
-          id: movies[movie].id,
-          title: movies[movie].title,
-          overview: movies[movie].overview,
-          rating: movies[movie].rating,
-          poster: movies[movie].poster
-        });
+    //   this.setState({
+    //     movies: newState
+    //   });
 
-      }
+    //   console.log(this.state.movies);
 
-      console.log(newState);
+    // });
 
-      this.setState({
-        movies: newState
-      });
-
-      console.log(movies);
-
-    });
 
     return (
       <div>
+        {
+          
+        }
         <Container>
-          {this.state.movies.map(movie => (
-             <WatchlistMovie
+            <WatchlistMovie
 
-              />
-          ))}
+            />
         </Container>
       </div>
     )

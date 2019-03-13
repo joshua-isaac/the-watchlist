@@ -17,7 +17,9 @@ import Login from "./components/Login";
 
 // API Call
 const API_KEY = "7b9e2473f094d438dd1ce87d0bcb97af";
-const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
+const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+
+// https://api.themoviedb.org/3/movie/top_rated?api_key=7b9e2473f094d438dd1ce87d0bcb97af&language=en-US&page=1
 
 class App extends Component {
   constructor() {
@@ -88,9 +90,11 @@ class App extends Component {
                   user={this.state.userID} 
                   url={this.state.url}
            />
-          <Watchlist path="/watchlist"
-                     user={this.state.userID}
-           />
+           {this.state.user &&
+                <Watchlist path="/watchlist"
+                user={this.state.userID}
+          />
+           }
           <Register path="/register"
                     registerUser={this.registerUser}
            />

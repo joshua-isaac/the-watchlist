@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import { Link } from '@reach/router';
 import { Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap';
 import { FaFilm } from 'react-icons/fa';
 
