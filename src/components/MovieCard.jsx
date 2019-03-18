@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+
+// Import Firebase
 import firebase from "../config/Firebase";
 
+// Import Bootstrap Components
 import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
 
+// Import Styles
 import "./MovieCard.css";
-
-import ModalAlert from "./ModalAlert";
 
 export default class MovieCard extends Component {
   constructor(props) {
@@ -32,7 +34,6 @@ export default class MovieCard extends Component {
       overview: this.state.overview,
       rating: this.state.rating,
       release: this.state.release
-
     };
 
     this.setState({ show: true });
@@ -47,15 +48,14 @@ export default class MovieCard extends Component {
   render() {
     return (
       <Container>
-
         <Modal show={this.state.show} onHide={this.handleClose.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title>{this.state.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <p>Woohoo, {this.state.title} has been added to your watchlist!</p>
-              <p>It'll hit the theatres on {this.state.release}.</p>
-              </Modal.Body>
+            <p>Woohoo, {this.state.title} has been added to your watchlist!</p>
+            <p>It'll hit the theatres on {this.state.release}.</p>
+          </Modal.Body>
           <Modal.Footer>
             <Button className="cta-btn" onClick={this.handleClose.bind(this)}>
               Close
@@ -75,15 +75,19 @@ export default class MovieCard extends Component {
             <h1>{this.state.title}</h1>
             <p>{this.state.overview}</p>
             <p>Release: {this.state.release}</p>
-            <h4>Rating: <span className="rating">{this.state.rating}</span></h4>
+            <h4>
+              Rating: <span className="rating">{this.state.rating}</span>
+            </h4>
             <Form>
-              <Button className="cta-btn add-btn" onClick={this.addMovie.bind(this)}>
+              <Button
+                className="cta-btn add-btn"
+                onClick={this.addMovie.bind(this)}
+              >
                 Add to Watchlist
               </Button>
             </Form>
           </Col>
         </Row>
-
       </Container>
     );
   }

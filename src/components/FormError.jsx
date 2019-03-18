@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+// Import Bootstrap Components
 import { Col } from 'react-bootstrap';
 
 export default class FormError extends Component {

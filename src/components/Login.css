@@ -1,47 +1,49 @@
-.login-container{
+.login-container {
     margin-top: 80px;
 }
 
-.login-title{
+.login-title {
     margin-bottom: 30px;
 }
 
-.form-control{
+.form-control {
     background-color: #a239ca;
     color: #0e0b16;
 }
 
-.form-control:focus{
+.form-control:focus {
     background-color: #a239ca;
     color: #e7dfdd;
 }
 
-.form-control::placeholder{
+.form-control::placeholder {
     color: #e7dfdd;
 }
 
-.form-group{
+.form-group {
     margin-bottom: 30px;
 }
 
-.cta-btn{
+.cta-btn {
     background-color: #a239ca;
     border: #a239ca;
     color: #e7dfdd;
 }
-.cta-btn:hover{
+
+.cta-btn:hover {
     background-color: #7c299b;
     color: #e7dfdd;
 }
 
-.new-user{
+.new-user {
     margin-top: 20px;
 }
 
-.reg-link{
+.reg-link {
     color: #a239ca;
 }
-.reg-link:hover{
+
+.reg-link:hover {
     color: #7c299b;
     text-decoration: none;
 }

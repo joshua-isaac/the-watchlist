@@ -1,4 +1,4 @@
-.nav-bg{
+.nav-bg {
     background-color: #0e0b16;
     border-bottom: 2px solid #a239ca;
 }
@@ -10,9 +10,11 @@
 .navbar-light .navbar-nav .nav-link:hover {
     color: #a239ca;
 }
-.navbar-brand{
+
+.navbar-brand {
     font-weight: bold;
 }
+
 .navbar-light .navbar-brand {
     color: #e7dfdd;
 }
@@ -21,11 +23,11 @@
     color: #e7dfdd;
 }
 
-.film{
+.film {
     margin: 0px 5px 4px 0px;
     color: #a239ca;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     background-color: #a239ca;
 }

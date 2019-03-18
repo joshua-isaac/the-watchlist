@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 
-import { Nav, Navbar, Form, FormControl, Button } from "react-bootstrap";
-import {
-  FaFilm,
-  FaTv,
-  FaVideoSlash,
-  FaFileVideo,
-  FaViadeo,
-  FaVideo
-} from "react-icons/fa";
+// Import Bootstrap Components
+import { Nav, Navbar } from "react-bootstrap";
 
+// Import FontAwesome Icon
+import { FaVideo } from "react-icons/fa";
+
+// Import Navigate
 import "./Navigation.css";
 
 export default class Navigation extends Component {

@@ -1,37 +1,38 @@
-.movie-card{
+.movie-card {
     margin-top: 90px;
     padding-bottom: 4rem;
     border-bottom: 2px solid #a239ca;
 }
 
-.cta-btn{
+.cta-btn {
     background-color: #a239ca;
     border: #a239ca;
     color: #e7dfdd;
 }
-.cta-btn:hover{
+
+.cta-btn:hover {
     background-color: #7c299b;
     color: #e7dfdd;
 }
 
-.add-btn{
+.add-btn {
     margin-top: 30px;
 }
 
-.rating{
+.rating {
     color: #a239ca;
 }
 
-.modal-content{
+.modal-content {
     background-color: #0e0b16;
     border: 2px solid #a239ca;
 }
 
-.modal-header{
+.modal-header {
     border-bottom: none;
 }
 
-.modal-footer{
+.modal-footer {
     border-top: none;
 }
 
@@ -39,12 +40,12 @@
     opacity: .9;
 }
 
-.close{
+.close {
     color: #a239ca;
     text-shadow: none;
     opacity: 1;
 }
 
-.close:hover{
+.close:hover {
     color: #7c299b;
 }
