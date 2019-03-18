@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+The Watchlist is a Web App where users can add new and upcoming movies to their list, so they never forget to watch it. The Watchlist is built using [React.js](https://reactjs.org/) for the user interface, and [React-Bootstrap](https://react-bootstrap.github.io/) for it's responsiveness. [Google Firebase](https://firebase.google.com/) is used for user authentication, and for its real-time database to store movies. All the movie data is fetched from the [Movie DB API](https://developers.themoviedb.org/3) using [Axios](https://www.npmjs.com/package/axios).
+
 ## Available Scripts
 
 In the project directory, you can run:
