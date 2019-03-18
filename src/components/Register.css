@@ -13,7 +13,7 @@
 
 .form-control{
     background-color: #a239ca;
-    color: #0e0b16;
+    color: #e7dfdd;
 }
 
 .form-control:focus{
@@ -22,7 +22,7 @@
 }
 
 .form-control::placeholder{
-    color: #0e0b16;
+    color: #e7dfdd;
 }
 
 .form-group{
