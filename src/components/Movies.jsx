@@ -26,6 +26,8 @@ export default class Movies extends Component {
     });
   }
 
+
+
   componentDidMount(){
       this.fetchMovies();
   }
@@ -46,6 +48,7 @@ export default class Movies extends Component {
                 overview={movie.overview}
                 poster={`http://image.tmdb.org/t/p/w300//${movie.poster_path}`}
                 rating={movie.vote_average}
+                release={movie.release_date}
                 user={this.props.user}
               />
           ))}

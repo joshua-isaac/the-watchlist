@@ -1,0 +1,9 @@
+.movie-card{
+    margin-top: 90px;
+    padding-bottom: 4rem;
+    border-bottom: 2px solid #a239ca;
+}
+
+.remove-btn{
+    margin-top: 30px;
+}

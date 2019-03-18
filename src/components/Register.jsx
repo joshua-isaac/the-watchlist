@@ -70,11 +70,11 @@ export default class Register extends Component {
 
   render() {
     return (
-      <Container className="justify-content-center">
+      <Container className="justify-content-center register-container">
         <Row>
-          <Col sm={12}>
+          <Col  className="mx-auto" sm={12} lg={8}>
             <Form className="form" onSubmit={this.handleSubmit}>
-            <h1>Register</h1>
+            <h1 className="register-title">Register</h1>
 
             {/* If passOne does not equal to passTwo, trigger error message */}
             {this.state.errorMessage !== null ? (
@@ -82,16 +82,6 @@ export default class Register extends Component {
             
             // if passOne = passTwo, set errorMessage to null (nothing);
             ) : null }
-
-            {/* Display Name Form */}
-              <Form.Group>
-                <Form.Control type="text"
-                              name="displayName"
-                              placeholder="Enter Display Name"
-                              value={this.state.displayName}
-                              onChange={this.handleChange} 
-                    />
-              </Form.Group>
 
               {/* Email Form */}
               <Form.Group>
@@ -121,7 +111,7 @@ export default class Register extends Component {
                               onChange={this.handleChange}
                  />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button className="cta-btn" type="submit">
                 Register
               </Button>
             </Form>

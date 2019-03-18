@@ -52,8 +52,13 @@ export default class Watchlist extends Component {
 
     return (
         <Container>
+
+          {!this.state.watchlist && (
+            <p>no movies</p>
+          )}
+    
             {this.state.watchlist.map(item => (
-              <WatchlistMovie
+              <WatchlistMovie className="watchlist-movie"
                   key={item.id}
                   id={item.id}
                   title={item.title}

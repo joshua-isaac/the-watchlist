@@ -14,19 +14,17 @@ import Movies from "./components/Movies";
 import Watchlist from "./components/Watchlist";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import FAQ from './components/FAQ';
 
-// API Call
+// API Info
 const API_KEY = "7b9e2473f094d438dd1ce87d0bcb97af";
-const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
-
-// https://api.themoviedb.org/3/movie/top_rated?api_key=7b9e2473f094d438dd1ce87d0bcb97af&language=en-US&page=1
+const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: null,
-      displayName: null,
       userID: null,
       url: url
     };
@@ -102,6 +100,7 @@ class App extends Component {
                     registerUser={this.registerUser}
            />
           <Login path="/login" />
+          <FAQ path="/faq" />
         </Router>
       </div>
     );

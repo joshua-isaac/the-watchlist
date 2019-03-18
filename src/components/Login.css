@@ -1,13 +1,8 @@
-.form{
-    width: 80%;
-    margin: 0 auto;
-}
-
-.register-container{
+.login-container{
     margin-top: 80px;
 }
 
-.register-title{
+.login-title{
     margin-bottom: 30px;
 }
 
@@ -37,4 +32,16 @@
 .cta-btn:hover{
     background-color: #7c299b;
     color: #e7dfdd;
+}
+
+.new-user{
+    margin-top: 20px;
+}
+
+.reg-link{
+    color: #a239ca;
+}
+.reg-link:hover{
+    color: #7c299b;
+    text-decoration: none;
 }

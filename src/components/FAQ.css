@@ -1,0 +1,16 @@
+.faq-container{
+   padding-top: 12rem;
+}
+
+.faq-container h1{
+    margin-bottom: 3rem;
+}
+
+.faq-text a{
+    color: #a239ca;
+}
+
+.faq-text a:hover{
+    color: #7c299b;
+    text-decoration: none;
+}

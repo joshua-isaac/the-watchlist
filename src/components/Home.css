@@ -1,5 +1,27 @@
-
 .home{
-    background: red;
-    height: 100vh;
+    margin-top: 10rem;
+}
+
+.home h1{
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 4rem;
+}
+
+.lead{
+    margin-bottom: 60px;
+}
+
+.cta-btn{
+    background-color: #a239ca;
+    border: #a239ca;
+    color: #e7dfdd;
+}
+.cta-btn:hover{
+    background-color: #7c299b;
+    color: #e7dfdd;
+}
+
+.cta-btn:active{
+    background-color: #a239ca !important;
 }

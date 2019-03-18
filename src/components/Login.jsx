@@ -7,6 +7,8 @@ import { navigate } from '@reach/router';
 
 import FormError from './FormError';
 
+import "./Login.css";
+
 
 export default class Login extends Component {
 
@@ -60,11 +62,11 @@ export default class Login extends Component {
 
   render() {
     return (
-      <Container className="justify-content-center">
+      <Container className="justify-content-center login-container">
         <Row>
-          <Col sm={12}>
+          <Col className="mx-auto" sm={12} lg={8}>
             <Form className="form" onSubmit={this.handleSubmit}>
-            <h1>Login</h1>
+            <h1 className="login-title">Login</h1>
               
               {/* If passOne does not equal to passTwo, trigger error message */}
             {this.state.errorMessage !== null ? (
@@ -91,9 +93,12 @@ export default class Login extends Component {
                               onChange={this.handleChange}
                     />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button className="cta-btn" type="submit">
                 Login
               </Button>
+              <div className="new-user">
+                <p>New? Register <a href="/register" className="reg-link">here</a></p>
+              </div>
             </Form>
           </Col>
         </Row>

@@ -4,6 +4,7 @@ import firebase from "../config/Firebase";
 import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
 
 import "./MovieCard.css";
+
 import ModalAlert from "./ModalAlert";
 
 export default class MovieCard extends Component {
@@ -16,6 +17,7 @@ export default class MovieCard extends Component {
       overview: props.overview,
       poster: props.poster,
       rating: props.rating,
+      release: props.release,
       show: false
     };
   }
@@ -28,7 +30,8 @@ export default class MovieCard extends Component {
       title: this.state.title,
       poster: this.state.poster,
       overview: this.state.overview,
-      rating: this.state.rating
+      rating: this.state.rating,
+      release: this.state.release
 
     };
 
@@ -51,15 +54,16 @@ export default class MovieCard extends Component {
           </Modal.Header>
           <Modal.Body>
               <p>Woohoo, {this.state.title} has been added to your watchlist!</p>
+              <p>It'll hit the theatres on {this.state.release}.</p>
               </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose.bind(this)}>
+            <Button className="cta-btn" onClick={this.handleClose.bind(this)}>
               Close
             </Button>
           </Modal.Footer>
         </Modal>
 
-        <Row className="movie-card mt-4 mb-4">
+        <Row className="movie-card">
           <Col lg={3} sm={12} className="text-center">
             <img
               className="img-fluid"
@@ -67,17 +71,19 @@ export default class MovieCard extends Component {
               alt={this.state.title}
             />
           </Col>
-          <Col lg={6} sm={12}>
+          <Col lg={9} sm={12}>
             <h1>{this.state.title}</h1>
             <p>{this.state.overview}</p>
-            <h4>Rating: {this.state.rating}</h4>
+            <p>Release: {this.state.release}</p>
+            <h4>Rating: <span className="rating">{this.state.rating}</span></h4>
             <Form>
-              <Button onClick={this.addMovie.bind(this)}>
+              <Button className="cta-btn add-btn" onClick={this.addMovie.bind(this)}>
                 Add to Watchlist
               </Button>
             </Form>
           </Col>
         </Row>
+
       </Container>
     );
   }

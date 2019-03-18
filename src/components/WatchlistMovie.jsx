@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
-import { Row, Col, Button, Form } from "react-bootstrap";
+import { Row, Col, Button, Form, Container } from "react-bootstrap";
 
 import firebase from '../config/Firebase';
+
+import "./WatchlistMovie.css";
 
 export default class WatchlistMovie extends Component {
   constructor(props) {
@@ -36,7 +38,10 @@ export default class WatchlistMovie extends Component {
 
   render() {
     return (
-      <Row className="movie-card mt-4 mb-4">
+
+      <Container>
+
+      <Row className="movie-card">
         <Col lg={3} sm={12} className="text-center">
           <img
             className="img-fluid"
@@ -49,10 +54,12 @@ export default class WatchlistMovie extends Component {
           <p>{this.state.overview}</p>
           <h4>Rating: {this.state.rating}</h4>
           <Form>
-            <Button variant="danger" onClick={this.removeItem.bind(this)}>Remove From Watchlist</Button>
+            <Button variant="danger" className="remove-btn" onClick={this.removeItem.bind(this)}>Remove From Watchlist</Button>
           </Form>
         </Col>
       </Row>
+
+      </Container>
     );
   }
 }
