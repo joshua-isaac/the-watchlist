@@ -9,7 +9,6 @@ import "./FAQ.css";
 export default class FAQ extends Component {
   render() {
     return (
-      
       <Container className="faq-container">
         <Row>
           <Col lg={9} className="mx-auto">
