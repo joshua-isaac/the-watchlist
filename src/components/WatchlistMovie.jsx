@@ -50,14 +50,14 @@ export default class WatchlistMovie extends Component {
           <Col lg={6} sm={12}>
             <h1>{this.state.title}</h1>
             <p>{this.state.overview}</p>
-            <h4>Rating: {this.state.rating}</h4>
+            <h4>Rating: <span className="rating">{this.state.rating}</span></h4>
             <Form>
               <Button
                 variant="danger"
                 className="remove-btn"
                 onClick={this.removeItem.bind(this)}
               >
-                Remove From Watchlist
+                Remove
               </Button>
             </Form>
           </Col>
