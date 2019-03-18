@@ -9,4 +9,9 @@ In the project directory:
 2. npm / yarn start
 3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## Future of The Watchlist
+1. Search functionality for all movies, not just upcoming / new.
+2. Filter genres functionality.
+3. have users be able to share movie data to friends.
+
 ## Enjoy!
