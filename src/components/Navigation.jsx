@@ -24,7 +24,7 @@ export default class Navigation extends Component {
           <Navbar.Brand className="logo" href="/">
             <FaVideo className="film" /> The Watchlist
           </Navbar.Brand>
-          <Navbar.Toggle bg="light" aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle className="custom-toggler" bg="light" aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               {user && <Nav.Link href="/">Home</Nav.Link>}
