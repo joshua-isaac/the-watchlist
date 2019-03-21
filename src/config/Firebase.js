@@ -1,18 +1,18 @@
-import firebase from 'firebase/app';
-import 'firebase/database';
-import 'firebase/auth';
+import firebase from "firebase/app";
+import "firebase/database";
+import "firebase/auth";
 
-const config = {
-    apiKey: "AIzaSyBmnxNh9ZIThI57yOPmUembpvMBqAymPO0",
-    authDomain: "the-watchlist.firebaseapp.com",
-    databaseURL: "https://the-watchlist.firebaseio.com",
-    projectId: "the-watchlist",
-    storageBucket: "the-watchlist.appspot.com",
-    messagingSenderId: "114521226950"
-  };
-  firebase.initializeApp(config);
+var config = {
+  apiKey: "AIzaSyDOpm_bXpPBvkiv0KyWL6QATVXHgLAffJI",
+  authDomain: "movieapp-fe482.firebaseapp.com",
+  databaseURL: "https://movieapp-fe482.firebaseio.com",
+  projectId: "movieapp-fe482",
+  storageBucket: "movieapp-fe482.appspot.com",
+  messagingSenderId: "611284571248"
+};
+firebase.initializeApp(config);
 
-  export const provider = new firebase.auth.GoogleAuthProvider();
-  //export const auth = firebase.auth();
+export const provider = new firebase.auth.GoogleAuthProvider();
+//export const auth = firebase.auth();
 
-  export default firebase;
+export default firebase;

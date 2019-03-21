@@ -26,7 +26,6 @@ export default class MovieCard extends Component {
 
   addMovie() {
     const movieRef = firebase.database().ref(`watchlist/${this.props.user}`);
-
     const movie = {
       id: this.state.id,
       title: this.state.title,
@@ -35,11 +34,26 @@ export default class MovieCard extends Component {
       rating: this.state.rating,
       release: this.state.release
     };
-
     this.setState({ show: true });
-
     movieRef.push(movie);
   }
+
+  handleClick = () => {
+    let currentId = this.state.id;
+    const movieRef = firebase.database().ref(`watchlist/${this.props.user}`);
+    movieRef
+      .orderByChild("id")
+      .equalTo(currentId)
+      .once("value")
+      .then(snapshot => {
+        // PROMISES ARE WEIRD AF
+        if (snapshot.numChildren() > 0) {
+          //USE BLOCK TO TELL THE USERS THEY ALREADY ADDED THAT MOVIE TO THEIR WATCHLIST
+        } else {
+          this.addMovie();
+        }
+      });
+  };
 
   handleClose() {
     this.setState({ show: false });
@@ -79,10 +93,7 @@ export default class MovieCard extends Component {
               Rating: <span className="rating">{this.state.rating}</span>
             </h4>
             <Form>
-              <Button
-                className="cta-btn add-btn"
-                onClick={this.addMovie.bind(this)}
-              >
+              <Button className="cta-btn add-btn" onClick={this.handleClick}>
                 Add to Watchlist
               </Button>
             </Form>
