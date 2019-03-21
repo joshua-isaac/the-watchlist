@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // Import Bootstrap Componenets
-import { Container, Button, Modal } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 // Import Axios
 import axios from "axios";

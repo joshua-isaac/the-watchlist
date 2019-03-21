@@ -9,6 +9,12 @@ import { Container } from "react-bootstrap";
 // Import App Components
 import WatchlistMovie from "./WatchlistMovie";
 
+// Import Styles
+import "./Watchlist.css";
+
+// Import Twitter Share
+import { TwitterShareButton, TwitterIcon } from "react-share";
+
 export default class Watchlist extends Component {
   constructor(props) {
     super(props);
@@ -50,9 +56,38 @@ export default class Watchlist extends Component {
   }
 
   render() {
+    const shareUrl = "https://the-watchlist.herokuapp.com/";
+    const movies = this.state.watchlist.map(item => {
+      return (item.title);
+    });
+
+let text
+
+    if(movies.length > 1){
+       text = ' are in my Watchlist! What\'s in yours?';
+    } else {
+       text = ' is in my Watchlist! What\'s in yours?';
+    }
+
     return (
       <Container>
-        {!this.state.watchlist && <p>no movies</p>}
+        <div className="no-movie">
+          {this.state.watchlist.length === 0 && (
+            <h1>Uh oh, looks like there are no movies in your watchlist :(</h1>
+          )}
+        </div>
+
+        <div className="share">
+
+          <TwitterShareButton
+            url={shareUrl}
+            title={' ' + movies + text }
+            className="Demo__some-network__share-button"
+          >
+            <TwitterIcon size={32} round />
+          </TwitterShareButton>
+
+        </div>
 
         {this.state.watchlist.map(item => (
           <WatchlistMovie
