@@ -5,7 +5,20 @@
 }
 
 .remove-btn {
-    margin-top: 30px;
+    margin-top: 20px;
+}
+
+.twitter{
+    margin-top: 10px;
+}
+
+.inline{
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.share{
+    margin-top: 15px;
 }
 
 .rating {

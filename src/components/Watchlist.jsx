@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import firebase from "../config/Firebase";
 
 // Import Bootstrap Componenets
-import { Container } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 // Import App Components
 import WatchlistMovie from "./WatchlistMovie";
@@ -56,38 +56,54 @@ export default class Watchlist extends Component {
   }
 
   render() {
-    const shareUrl = "https://the-watchlist.herokuapp.com/";
-    const movies = this.state.watchlist.map(item => {
-      return (item.title);
-    });
 
-let text
+    // const shareUrl = "https://the-watchlist.herokuapp.com/";
+    // const movies = this.state.watchlist.map(item => {
+    //   return (item.title);
+    // });
 
-    if(movies.length > 1){
-       text = ' are in my Watchlist! What\'s in yours?';
-    } else {
-       text = ' is in my Watchlist! What\'s in yours?';
-    }
+    // // let text
+
+    // // if (movies.length > 1) {
+    // //   text = ' are in my Watchlist! What\'s in yours?';
+    // // } else {
+    // //   text = ' is in my Watchlist! What\'s in yours?';
+    // // }
 
     return (
       <Container>
-        <div className="no-movie">
-          {this.state.watchlist.length === 0 && (
-            <h1>Uh oh, looks like there are no movies in your watchlist :(</h1>
-          )}
-        </div>
 
-        <div className="share">
+        {/* <Row>
+          <Col lg={12} sm={12} className="mx-auto">
 
-          <TwitterShareButton
-            url={shareUrl}
-            title={' ' + movies + text }
-            className="Demo__some-network__share-button"
-          >
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
+            <div className="share text-center">
+              <span className="text-center">
+              <TwitterShareButton
+                url={shareUrl}
+                title={' ' + movies + text}
+              >
+                <TwitterIcon className="twitter-icon" size={48} round />
+              </TwitterShareButton>
+              </span>
+            </div>
+          </Col>
+          </Row> */}
 
-        </div>
+          <Row>
+            <Col lg={12}>
+
+            <div className="no-movie">
+              {this.state.watchlist.length === 0 && (
+                <div>
+                  <h1>Uh oh, looks like there are no movies in your watchlist :(</h1>
+                    <Button href="/movies" className="cta-btn">
+                    Browse Movies
+                </Button>
+                </div>
+              )}
+            </div>
+            </Col>
+        </Row>
 
         {this.state.watchlist.map(item => (
           <WatchlistMovie
@@ -101,6 +117,7 @@ let text
             user={this.props.user}
           />
         ))}
+
       </Container>
     );
   }
