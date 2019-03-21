@@ -12,6 +12,6 @@ In the project directory:
 ## Future of The Watchlist
 1. Search functionality for all movies, not just upcoming / new.
 2. Filter genres functionality.
-3. have users be able to share movie data to friends.
+3. Some sort of push notification / email notification reminding users that a movie is out / soon to be out
 
 ## Enjoy!
